@@ -1,6 +1,0 @@
-/mnt/c/Users/hunen/source/C++programs/Cross_Platform_Projects/HardwareMonitor/build/CMakeFiles/HardwareMonitor.exe.dir
-/mnt/c/Users/hunen/source/C++programs/Cross_Platform_Projects/HardwareMonitor/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/hunen/source/C++programs/Cross_Platform_Projects/HardwareMonitor/build/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/hunen/source/C++programs/Cross_Platform_Projects/HardwareMonitor/build/platforms/linux/CMakeFiles/LinuxSpecific.dir
-/mnt/c/Users/hunen/source/C++programs/Cross_Platform_Projects/HardwareMonitor/build/platforms/linux/CMakeFiles/edit_cache.dir
-/mnt/c/Users/hunen/source/C++programs/Cross_Platform_Projects/HardwareMonitor/build/platforms/linux/CMakeFiles/rebuild_cache.dir

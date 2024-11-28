@@ -1,2 +1,0 @@
-/usr/bin/ar qc libLinuxSpecific.a CMakeFiles/LinuxSpecific.dir/linux_specific.cpp.o
-/usr/bin/ranlib libLinuxSpecific.a
