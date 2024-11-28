@@ -1,0 +1,102 @@
+{ 
+    "version": "2.0.0", 
+    "tasks": [ 
+        { 
+            "label": "CMake: configure", 
+            "type": "shell", 
+            "command": "cmake", 
+            "args": [ 
+                "-S", 
+                "${workspaceFolder}", 
+                "-B", 
+                "${workspaceFolder}/build" 
+            ], 
+            "group": { 
+                "kind": "build", 
+                "isDefault": true 
+            }, 
+            "detail": "Configure the project" 
+        }, 
+        { 
+            "label": "CMake: build", 
+            "type": "shell", 
+            "command": "cmake", 
+            "args": [ 
+                "--build", 
+                "${workspaceFolder}/build", 
+                "--target", "all" 
+            ], 
+            "group": { 
+                "kind": "build", 
+                "isDefault": true 
+            }, 
+            "detail": "Build the entire project from the specified build directory"
+        }, 
+        { 
+            "label": "CMake: clean", 
+            "type": "shell", 
+            "command": "cmake", 
+            "args": [ 
+                "--build", 
+                "${workspaceFolder}/build", 
+                "--target", "clean" 
+            ], 
+            "group": { 
+                "kind": "clean", 
+                "isDefault": true 
+            }, 
+            "detail": "Clean the build directory and remove all generated files", 
+            "dependsOn": [
+                "Remove exe"
+            ] 
+        }, 
+        { 
+            "label": "Remove exe", 
+            "type": "shell", 
+            "command": "bash", 
+            "args": [ 
+                "-c", 
+                "if [ -f \"${workspaceFolder}/build/HardwareMonitor.exe\" ]; then rm \"${workspaceFolder}/build/HardwareMonitor.exe\"; fi" 
+            ], 
+            "problemMatcher": [] 
+        }, 
+        { 
+            "label": "CMake: configure and build", 
+            "dependsOrder": "sequence", 
+            "dependsOn": [ 
+                "CMake: configure", 
+                "CMake: build" 
+            ], 
+            "group": { 
+                "kind": "build", 
+                "isDefault": false 
+            }, 
+            "detail": "Configure and then build the project sequentially" 
+        }, 
+        { 
+            "label": "CMake: configure, clean, build, and run", 
+            "dependsOrder": "sequence", 
+            "dependsOn": [ 
+                "CMake: configure", 
+                "CMake: clean", 
+                "CMake: build", 
+                "Run exe" 
+            ], 
+            "group": { 
+                "kind": "build", 
+                "isDefault": false 
+            }, 
+            "detail": "Configure, clean, build the project, and then run main.cpp sequentially" 
+        }, 
+        { 
+            "label": "Run exe", 
+            "type": "shell", 
+            "command": "${workspaceFolder}/build/HardwareMonitor.exe", 
+            "group": { 
+                "kind": "test", 
+                "isDefault": true 
+            }, 
+            "detail": "Run the compiled main.cpp executable" 
+        } 
+    ] 
+}

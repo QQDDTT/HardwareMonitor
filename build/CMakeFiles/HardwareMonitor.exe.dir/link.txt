@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/HardwareMonitor.exe.dir/src/main.cpp.o -o HardwareMonitor.exe  platforms/linux/libLinuxSpecific.a 
