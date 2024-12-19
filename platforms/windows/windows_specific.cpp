@@ -1,6 +1,5 @@
-#define _WIN32_DCOM
-#define __cdecl
-#define __uuidof
+#define NTDDI_VERSION NTDDI_WIN10_CO  // Windows 11 21H2
+#define _WIN32_WINNT 0x0A00
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -10,12 +9,19 @@
 #include <Windows.h>
 #include <WbemIdl.h>
 #include <comdef.h>
-#include "message.h"
-#include <sysinfoapi.h>
-#include <VersionHelpers.h>
-#include <comdef.h>
-#include <variant>
+#include <combaseapi.h>
+#include <winnt.h>
+#include <winbase.h>
+#include <winuser.h>
+#include <winreg.h>
+#include <winternl.h>
 #include <conio.h>
+
+#include "monitor.h"
+#include <VersionHelpers.h>
+#include <minwinbase.h>
+#include <sysinfoapi.h>
+
 
 #pragma comment(lib, "wbemuuid.lib") 
 
@@ -190,6 +196,14 @@ void DisplayCPUInfo(const MsgList& lang) {
 }
 
 /**
+ * @brief 
+ * 
+ */
+void DisplayCPUThreadUsage(const MsgList& lang) {
+
+}
+
+/**
  * @brief 显示 GPU 信息
  * 
  * 该函数通过调用 nvidia-smi 命令获取 GPU 的基本信息，包括 GPU 名称、使用率和显存信息，并输出到控制台。
@@ -276,7 +290,7 @@ void DisplayMemoryInfo(const MsgList& lang) {
  * 该函数通过调用 GetSystemInfo 函数获取系统信息，包括操作系统版本、处理器架构、物理内存等信息，并输出到控制台。
  * 
  */
-char getch() {
+char getkey() {
     int ch = _getch(); // 获取 int 类型的字符 
     char char_ch = (char)ch; // 将 int 类型转换为 char 类型
     return char_ch; // 返回 char 类型的字符

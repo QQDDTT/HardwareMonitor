@@ -1,12 +1,12 @@
-#ifndef MESSAGE_H
-#define MESSAGE_H
+#ifndef MONITOR_H
+#define MONITOR_H
 
 // 多国语言支持
 struct MsgList {
-    const char* os_info_title;          // 操作系统信息标题
+    const char* os_info_title;            // 操作系统信息标题
     const char* os_name;                  // 操作系统名称
     const char* os_version;               // 操作系统版本
-    const char* os_kernel;                 // 操作系统内核版本
+    const char* os_kernel;                // 操作系统内核版本
     const char* os_architecture;          // 操作系统架构
 
     const char* cpu_info_title;           // CPU 信息标题
@@ -37,6 +37,13 @@ struct MsgList {
 extern const MsgList LANG_CN;   // 中文
 extern const MsgList LANG_EN;   // 英文
 extern const MsgList LANG_JP;   // 日文
+
+// 函数接口
+void GetOSInfo(const MsgList& lang);
+void DisplayCPUInfo(const MsgList& lang);
+void DisplayCPUThreadUsage(const MsgList& lang);
+void DisplayGPUInfo(const MsgList& lang);
+void DisplayMemoryInfo(const MsgList& lang);
 
 // 中文
 const MsgList LANG_CN = {
@@ -116,7 +123,7 @@ const MsgList LANG_JP = {
 
     "CPU スレッド情報", 
     "CPU スレッド使用率",    // 示例字段（如果有多个线程的显示）
-    "%",                      // 使用率单位（百分比）
+    "%",                      // 使用率単位（百分比）
 
     "GPU 情報", 
     "NVIDIA GPU が検出されていないか、nvidia-smi がインストールされていません。",
@@ -136,10 +143,5 @@ const MsgList LANG_JP = {
 
 
 
-// 函数接口
-void GetOSInfo(const MsgList& lang);
-void DisplayCPUInfo(const MsgList& lang);
-void DisplayCPUThreadUsage(const MsgList& lang);
-void DisplayGPUInfo(const MsgList& lang);
-void DisplayMemoryInfo(const MsgList& lang);
-#endif // MESSAGE_H
+
+#endif // MONITOR_H

@@ -1,8 +1,8 @@
 {
     "cmake.generator": "Ninja",
-    "cmake.buildDirectory": "${workspaceFolder}\\build\\windows",
+    "cmake.buildDirectory": "${workspaceFolder}/build/linux",
     "cmake.configureOnOpen": true,
-    "C_Cpp.default.compilerPath": "C:\\Program Files\\mingw64\\bin\\gcc.exe",
+    "C_Cpp.default.compilerPath": "/usr/bin/g++",
     "files.associations": {
         "*.json": "jsonl",
         "array": "cpp",
@@ -17,7 +17,7 @@
         "compare": "cpp",
         "concepts": "cpp",
         "cstdarg": "cpp",
-        "cstddef": "cpp", 
+        "cstddef": "cpp",
         "cstdint": "cpp",
         "cstdio": "cpp",
         "cstdlib": "cpp",

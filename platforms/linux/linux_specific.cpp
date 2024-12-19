@@ -11,8 +11,7 @@
 #include <sys/utsname.h>
 #include <termios.h>
 #include <unistd.h>
-#include "message.h"  // 包含语言消息定义
-#include "system_info.h"  // 包含系统信息函数声明
+#include "monitor.h"  // 包含语言消息定义
 
 
 /**
@@ -238,7 +237,7 @@ void DisplayMemoryInfo(const MsgList& lang) {
     meminfo.close();
 }
 
-char getch() {
+char getkey() {
     struct termios oldt, newt;
     char ch;
     tcgetattr(STDIN_FILENO, &oldt);  // 获取当前终端设置

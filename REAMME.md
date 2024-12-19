@@ -1,10 +1,10 @@
-# System Monitor
+# Cross Platform Multifunctional Applications Build Project
+
+## System Monitor
 
 A lightweight system monitoring tool that displays real-time CPU, GPU, and memory information with multilingual support (Chinese, English, and Japanese). Users can dynamically switch languages using hotkeys and exit the program with a single keypress.
 
----
-
-## 🌟 Features
+### 🌟 Features
 
 - **OS Information**: Displays the operating system name, kernel version, and architecture.
 - **CPU Information**: Displays CPU model and frequency.
@@ -14,10 +14,14 @@ A lightweight system monitoring tool that displays real-time CPU, GPU, and memor
 - **Multilingual Support**: Dynamically switch between Chinese, English, and Japanese.
 - **Real-Time Updates**: Refreshes system information every second.
 
----
+## Keyboard Manage
 
-## 🔧 How to Use
 
-### Compile the Program
-```bash
-g++ -std=c++11 -o linux_monitor main.cpp include/linux_monitor.cpp -lpthread
+
+## Drive Clear
+
+
+
+
+
+

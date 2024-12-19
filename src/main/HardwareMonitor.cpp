@@ -4,13 +4,17 @@
 #include <thread>
 #include <atomic>
 #include <cstdlib>
-#include "message.h"
-#include "system_info.h"
 
 #ifdef _WIN32 
-#include "windows_specific.cpp" 
+#include "windows_specific.cpp"
+#include "windows_console_tool.cpp"
+#include "monitor.h"
+#include "console_tool.h"
 #elif __linux__ 
 #include "linux_specific.cpp"
+#include "linux_console_tool.cpp"
+#include "monitor.h"
+#include "console_tool.h"
 #endif
 
 // 使用原子指针存储语言，确保线程安全
@@ -21,7 +25,7 @@ std::atomic<bool> stopFlag(false);  // 全局停止标志，确保线程安全
  */ 
 void displayInfo() {
     while (!stopFlag.load()) {
-        system("clear");  // 清屏
+        clearScreen();  // 清屏
         // 获取当前语言
         const MsgList* lang = currentLang.load();
         // 显示系统信息
@@ -45,13 +49,13 @@ void displayInfo() {
 int main() {
     // 开始
     std::cout << "Starting the program..." << std::endl;
-
+    setConsoleEncode("UTF-8");  // 设置控制台编码
     // 启动线程
     std::thread refreshThread(displayInfo);
 
     char userInput;
     while (true) {
-        userInput = getch();  // 获取单个字符输入
+        userInput = getkey();  // 获取单个字符输入
         // 根据输入字符执行操作
         if (userInput == 'q') {
             stopFlag.store(true);  // 设置停止标志
@@ -66,7 +70,6 @@ int main() {
     }
     // 等待线程结束
     refreshThread.join();
-    system("clear");
     std::cout << "Program exited successfully." << std::endl;
     return 0;
 }

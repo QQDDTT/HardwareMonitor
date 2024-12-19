@@ -1,7 +1,21 @@
-{ 
+{
     "version": "2.0.0",
     "tasks": [
         // Linux tasks
+        {
+            "label": "Copy VSCode settings (Linux)",
+            "type": "shell",
+            "command": "cp",
+            "args": [
+                ".vscode/settings_linux.json",
+                ".vscode/settings.json"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Copy the VSCode settings to the .vscode directory"
+        },
         {
             "label": "CMake: clean (Linux)",
             "type": "shell",
@@ -16,6 +30,8 @@
                 "kind": "clean",
                 "isDefault": true
             },
+            "dependsOrder": "sequence",
+            "dependsOn": "Copy VSCode settings (Linux)",
             "detail": "Clean the build/linux directory and remove all generated files"
         },
         {
@@ -32,6 +48,8 @@
                 "kind": "build",
                 "isDefault": true
             },
+            "dependsOrder": "sequence",
+            "dependsOn": "Copy VSCode settings (Linux)",
             "detail": "Configure the project"
         },
         {
@@ -42,28 +60,33 @@
                 "--build",
                 "${workspaceFolder}/build/linux",
                 "--target",
-                "all" 
+                "all"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
+            "dependsOrder": "sequence",
+            "dependsOn": "Copy VSCode settings (Linux)",
             "detail": "Build the entire project from the specified build directory"
         },
         {
             "label": "Run (Linux)",
             "type": "shell",
-            "command": "${workspaceFolder}/build/linux/HardwareMonitor.out",
+            "command": "${workspaceFolder}/build/linux/HardwareMonitor",
             "group": {
                 "kind": "test",
                 "isDefault": true
             },
+            "dependsOrder": "sequence",
+            "dependsOn": "Copy VSCode settings (Linux)",
             "detail": "Run the compiled main.cpp executable"
         },
         {
             "label": "CMake: work (Linux)",
             "dependsOrder": "sequence",
             "dependsOn": [
+                "Copy VSCode settings (Linux)",
                 "CMake: clean (Linux)",
                 "CMake: configure (Linux)",
                 "CMake: build (Linux)",
@@ -78,6 +101,20 @@
 
         // Windows tasks
         {
+            "label": "Copy VSCode settings (Windows)",
+            "type": "shell",
+            "command": "cp",
+            "args": [
+                ".vscode/settings_windows.json",
+                ".vscode/settings.json"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "Copy the VSCode settings to the .vscode directory"
+        },
+        {
             "label": "CMake: clean (Windows)",
             "type": "shell",
             "command": "cmake",
@@ -91,6 +128,8 @@
                 "kind": "clean",
                 "isDefault": false
             },
+            "dependsOrder": "sequence",
+            "dependsOn": "Copy VSCode settings (Windows)",
             "detail": "Clean the build/windows directory and remove all generated files"
         },
         {
@@ -108,6 +147,8 @@
                 "isDefault": false
             },
             "problemMatcher": [],
+            "dependsOrder": "sequence",
+            "dependsOn": "Copy VSCode settings (Windows)",
             "detail": "Configure the project"
         },
         {
@@ -118,31 +159,37 @@
                 "--build",
                 "${workspaceFolder}\\build\\windows",
                 "--target",
-                "all"
+                "HardwareMonitor"
             ],
             "group": {
                 "kind": "build",
                 "isDefault": false
             },
             "problemMatcher": [],
+            "dependsOrder": "sequence",
+            "dependsOn": "Copy VSCode settings (Windows)",
             "detail": "Build the entire project from the specified build directory"
         },
         {
             "label": "Run (Windows)",
             "type": "shell",
-            "command": "${workspaceFolder}\\build\\windows\\HardwareMonitor.exe",
+            "command": "${workspaceFolder}\\build\\windows\\HardwareMonitor",
             "group": {
                 "kind": "test",
                 "isDefault": false
             },
-            "problemMatcher": []
+            "problemMatcher": [],
+            "dependsOrder": "sequence",
+            "dependsOn": "Copy VSCode settings (Windows)",
+            "detail": "Run the compiled executable"
         },
         {
             "label": "CMake: work (Windows)",
             "dependsOrder": "sequence",
             "dependsOn": [
-                "CMake: clean (Windows)",
-                "CMake: cinfigure (Windows)",
+                "Copy VSCode settings (Windows)",
+                // "CMake: clean (Windows)",
+                "CMake: configure (Windows)",
                 "CMake: build (Windows)",
                 "Run (Windows)"
             ],

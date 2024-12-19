@@ -1,3 +1,4 @@
+# toolchain.cmake
 # 设置系统类型为 Windows
 set(CMAKE_SYSTEM_NAME Windows)
 
@@ -26,7 +27,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_FLAGS "-DWIN32_LEAN_AND_MEAN -DVC_EXTRALEAN -fpermissive")
 set(CMAKE_CXX_FLAGS "-DWIN32_LEAN_AND_MEAN -DVC_EXTRALEAN -fpermissive")
 
-
 # 设置 Windows SDK 的包含路径 (请将路径替换为实际的 Windows SDK 安装路径)
 include_directories("/mnt/c/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/um")
 include_directories("/mnt/c/Program Files (x86)/Windows Kits/10/Include/10.0.26100.0/shared")
@@ -36,6 +36,3 @@ include_directories("/mnt/c/Program Files (x86)/Windows Kits/10/Include/10.0.261
 
 # 设置 Windows SDK 的库路径 (请将路径替换为实际的 Windows SDK 安装路径)
 link_directories("/mnt/c/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/um/x64")
-
-
-
